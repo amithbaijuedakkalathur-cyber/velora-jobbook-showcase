@@ -17,9 +17,12 @@ const workflow = [
 ];
 
 const screens = [
-  { id: 'overview', eyebrow: 'Today', title: 'Work at a glance', color: 'green' },
-  { id: 'job', eyebrow: 'Job #1042', title: 'AC service · Mehta Home', color: 'blue' },
-  { id: 'payment', eyebrow: 'Payment', title: '₹2,500 received', color: 'amber' },
+  { id: 'launch', eyebrow: 'Brand', title: 'Launch experience', src: '/screens/launch.jpg' },
+  { id: 'dashboard', eyebrow: 'Home', title: 'Business overview', src: '/screens/dashboard.jpg' },
+  { id: 'jobs', eyebrow: 'Jobs', title: 'Work in one place', src: '/screens/jobs.jpg' },
+  { id: 'money', eyebrow: 'Money', title: 'Income and expenses', src: '/screens/money.jpg' },
+  { id: 'people', eyebrow: 'People', title: 'Business contacts', src: '/screens/people.jpg' },
+  { id: 'business', eyebrow: 'More', title: 'Business tools', src: '/screens/business.jpg' },
 ];
 
 export default function Home() {
@@ -57,20 +60,11 @@ export default function Home() {
           <div className="hero-proof"><div><span>01</span><p>Designed around real field-work routines</p></div><div><span>02</span><p>Core experience works without the internet</p></div></div>
         </div>
 
-        <div className="hero-visual" aria-label="Concept preview of the Velora JobBook app">
+        <div className="hero-visual" aria-label="Screenshot of the Velora JobBook app">
           <div className="orbit orbit-one" /><div className="orbit orbit-two" />
-          <div className="phone">
-            <div className="phone-top"><span className="mini-logo">V</span><span>JobBook</span><i /></div>
-            <div className="phone-greeting"><small>Good morning, Amith</small><strong>Let&apos;s get work done.</strong></div>
-            <div className="mini-stats"><div><small>OPEN JOBS</small><strong>08</strong><span>3 due today</span></div><div><small>PAYMENTS</small><strong>₹12.4k</strong><span>This week</span></div></div>
-            <div className="phone-section-title"><b>Today&apos;s jobs</b><span>View all</span></div>
-            <div className="job-row"><i className="status-dot live" /><div><b>AC service</b><small>Mehta Home · 10:30 AM</small></div><span className="pill">In progress</span></div>
-            <div className="job-row"><i className="status-dot" /><div><b>Wiring check</b><small>North Cafe · 2:00 PM</small></div><span className="chev">›</span></div>
-            <button className="add-job" onClick={() => setModal('new-job')} aria-label="Open new job demo">+</button>
-            <div className="phone-nav"><b>⌂<small>Home</small></b><span>▣<small>Jobs</small></span><span>◎<small>Money</small></span><span>◇<small>More</small></span></div>
-          </div>
-          <div className="float-card float-one"><span>✓</span><p><small>JOB UPDATED</small><b>Payment recorded</b></p></div>
-          <div className="float-card float-two"><span>↯</span><p><small>OFFLINE READY</small><b>Your work stays with you</b></p></div>
+          <button className="phone real-phone" onClick={() => setModal('jobs')} aria-label="Open real JobBook screenshot"><img src="/screens/jobs.jpg" alt="Velora JobBook jobs screen" /></button>
+          <div className="float-card float-one"><span>✓</span><p><small>WORKING ANDROID APP</small><b>Real product interface</b></p></div>
+          <div className="float-card float-two"><span>↯</span><p><small>OFFLINE-FIRST</small><b>Built for field work</b></p></div>
         </div>
       </section>
 
@@ -84,14 +78,14 @@ export default function Home() {
 
       <section className="workflow-section" id="workflow"><div className="shell"><div className="section-head light"><div><div className="section-label">A SIMPLE FLOW</div><h2>From first call<br />to <span>job complete.</span></h2></div><p>Four connected moments. Tap a step, or watch the workflow move.</p></div><div className="workflow-grid"><div className="workflow-list">{workflow.map((step, index) => <button key={step.n} onClick={() => setActiveStep(index)} className={activeStep === index ? 'active' : ''}><span>{step.n}</span><div><b>{step.title}</b><p>{step.copy}</p></div><i>→</i></button>)}</div><div className="workflow-stage"><div className="stage-status"><span>LIVE WORKFLOW</span><b>{workflow[activeStep].n} / 04</b></div><div className="stage-icon">{['+', 'J', '₹', '✓'][activeStep]}</div><small>STEP {workflow[activeStep].n}</small><h3>{workflow[activeStep].title}</h3><p>{workflow[activeStep].copy}</p><div className="stage-progress"><i style={{ width: `${(activeStep + 1) * 25}%` }} /></div></div></div></div></section>
 
-      <section className="section shell" id="demo"><div className="section-head demo-head"><div><div className="section-label">PRODUCT PREVIEW</div><h2>Made to feel<br /><span>immediately familiar.</span></h2></div><p>Tap any screen for a closer look. These are honest interface previews—not production screenshots or claimed results.</p></div><div className="screen-grid">{screens.map((screen, index) => <button className="screen-card" key={screen.id} onClick={() => setModal(screen.id)}><span className="screen-index">0{index + 1}</span><div className="screen-preview"><div className="preview-bar"><b>VELORA</b><i /></div><small>{screen.eyebrow}</small><h3>{screen.title}</h3><div className={`preview-hero ${screen.color}`}><span /><b /><i /></div><div className="preview-line"><i /><span><b /><small /></span></div><div className="preview-line"><i /><span><b /><small /></span></div><div className="preview-line"><i /><span><b /><small /></span></div></div><div className="screen-caption"><span>Open preview</span><b>↗</b></div></button>)}</div></section>
+      <section className="section shell" id="demo"><div className="section-head demo-head"><div><div className="section-label">REAL PRODUCT SCREENS</div><h2>Made to feel<br /><span>immediately familiar.</span></h2></div><p>Tap any screen for a closer look at the working Android application.</p></div><div className="screen-grid">{screens.map((screen, index) => <button className="screen-card" key={screen.id} onClick={() => setModal(screen.id)}><span className="screen-index">0{index + 1} · {screen.eyebrow}</span><div className="screen-preview real-screen"><img src={screen.src} alt={`${screen.title} screen in Velora JobBook`} /></div><div className="screen-caption"><span>{screen.title}</span><b>↗</b></div></button>)}</div></section>
 
       <section className="build-section" id="build"><div className="shell build-grid"><div><div className="section-label">BUILT WITH AI, DIRECTED BY A HUMAN</div><h2>An idea shaped into<br />a working product.</h2><p className="build-lede">AI accelerated the path from ambiguous problem to prototype and implementation. Product judgment, workflow decisions, and the standard for the experience stayed human-led.</p></div><div className="tool-list"><div><span>01</span><h3>ChatGPT</h3><p>Product thinking, workflow critique, and clearer communication.</p></div><div><span>02</span><h3>Claude</h3><p>Exploration, implementation support, and alternative approaches.</p></div><div><span>03</span><h3>Codex</h3><p>Hands-on building, debugging, testing, and this web showcase.</p></div></div></div></section>
 
       <section className="founder shell"><div className="founder-mark">A</div><div><div className="section-label">FOUNDER &amp; PRODUCT BUILDER</div><h2>Built by Amith.</h2><p>I noticed an everyday problem, defined the product, and used AI-assisted development to make the idea tangible. JobBook is the kind of work that makes me feel alive: turning unclear, human problems into useful products.</p></div><a className="button primary" href="#top">Back to top <span>↑</span></a></section>
       <footer className="shell"><div className="brand"><span className="brand-mark">V</span><span>VELORA <b>JOBBOOK</b></span></div><p>Offline-first business clarity.</p><small>Independent product showcase · No commercial source code exposed</small></footer>
 
-      {modal && <div className="modal-backdrop" role="presentation" onMouseDown={() => setModal(null)}><div className="modal" role="dialog" aria-modal="true" aria-label="Product preview" onMouseDown={(event) => event.stopPropagation()}><button className="modal-close" onClick={() => setModal(null)} aria-label="Close preview">×</button>{modal === 'new-job' ? <div className="new-job-demo"><div className="section-label">INTERACTIVE DEMO</div><h2>Create a new job</h2><label>Customer<input value="Mehta Home" readOnly /></label><label>Work required<input value="AC service and inspection" readOnly /></label><button onClick={() => setModal(null)}>Job ready to create <span>✓</span></button><small>This interaction is a showcase preview and does not save customer data.</small></div> : <div className="modal-preview"><div className="modal-phone"><div className="preview-bar"><b>VELORA JOBBOOK</b><i /></div><small>{selectedScreen?.eyebrow}</small><h2>{selectedScreen?.title}</h2><div className={`preview-hero ${selectedScreen?.color}`}><span /><b /><i /></div>{[1,2,3,4].map((item) => <div className="preview-line" key={item}><i /><span><b /><small /></span></div>)}</div><div className="modal-copy"><div className="section-label">SCREEN PREVIEW</div><h3>{selectedScreen?.title}</h3><p>A replaceable product placeholder designed to demonstrate the visual system without exposing private app code or presenting mock content as production data.</p><button onClick={() => setModal(null)}>Continue exploring</button></div></div>}</div></div>}
+      {modal && selectedScreen && <div className="modal-backdrop" role="presentation" onMouseDown={() => setModal(null)}><div className="modal" role="dialog" aria-modal="true" aria-label="Product screenshot" onMouseDown={(event) => event.stopPropagation()}><button className="modal-close" onClick={() => setModal(null)} aria-label="Close preview">×</button><div className="modal-preview"><div className="modal-phone real-modal-phone"><img src={selectedScreen.src} alt={`${selectedScreen.title} screen in Velora JobBook`} /></div><div className="modal-copy"><div className="section-label">WORKING APP SCREEN</div><h3>{selectedScreen.title}</h3><p>This is a real screenshot from the current JobBook Android application. It is presented here without exposing the product&apos;s commercial source code.</p><button onClick={() => setModal(null)}>Continue exploring</button></div></div></div></div>}
     </main>
   );
 }
