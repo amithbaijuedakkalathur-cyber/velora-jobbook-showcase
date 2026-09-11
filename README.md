@@ -2,7 +2,7 @@
 
 An interactive product showcase for Velora JobBook — an offline-first business app for technicians and small contractors.
 
-**Live site:** https://velora-jobbook-showcase.pqc7qddb5p.chatgpt.site
+**Live site:**https://velora-jobbook-showcase.amith-baiju.chatgpt.site
 
 The page includes real application screenshots, interactive capability tabs, an animated workflow, and a screenshot lightbox. It was built as a standalone presentation layer for the WaterBridge AI Intern application.
 
