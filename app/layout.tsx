@@ -6,7 +6,7 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.URL || 'https://velora-jobbook-showcase.amith-baiju.chatgpt.site'),
+  metadataBase: new URL(process.env.URL || 'https://velora-jobbook-showcase.netlify.app'),
   title: 'Velora JobBook — Offline-first business clarity',
   description: 'A functional product showcase for Velora JobBook, an offline-first business app for technicians and small contractors.',
   openGraph: {
